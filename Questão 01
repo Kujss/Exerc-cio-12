@@ -1,0 +1,83 @@
+#include <stdio.h>
+
+
+struct Produtos {
+  char nome[50];
+  float valor;
+};
+
+int main() {
+
+  struct Produtos produto1, produto2, produto3, produto4, produto5;
+
+  strcpy(produto1.nome, "Placa-mãe");
+  produto1.valor = 480.00;
+
+  strcpy(produto2.nome, "Placa de Vídeo");
+  produto2.valor = 1400.00;
+
+  strcpy(produto3.nome, "Memória RAM");
+  produto3.valor = 180.00;
+
+  strcpy(produto4.nome, "Fonte");
+  produto4.valor = 520.00;
+
+  strcpy(produto5.nome, "SSD");
+  produto5.valor = 340.00;
+
+
+
+  printf("Produto: %s\n", produto1.nome);
+  printf("Valor: R$%.2f\n\n", produto1.valor);
+
+  printf("Produto: %s\n", produto2.nome);
+  printf("Valor: R$%.2f\n\n", produto2.valor);
+
+  printf("Produto: %s\n", produto3.nome);
+  printf("Valor: R$%.2f\n\n", produto3.valor);
+
+  printf("Produto: %s\n", produto4.nome);
+  printf("Valor: R$%.2f\n\n", produto4.valor);
+
+  printf("Produto: %s\n", produto5.nome);
+  printf("Valor: R$%.2f\n\n", produto5.valor);
+
+  float total;
+
+  total = produto1.valor + produto2.valor + produto3.valor + produto4.valor + produto5.valor;
+
+  printf("---Valor final: %.2f---\n\n", total);
+
+  
+
+  char formaPagamento[5][50] = {
+  "dinheiro",
+  "cartão de débito",
+  "cartão de crédito",
+  "pix",
+  "cheque"
+
+};
+
+  char produtos[5][50] = {
+  "placa de vídeo"
+  };
+
+  int numPagamento = 5;
+
+  printf("Formas de pagamento disponíveis: \n");
+  for(int i = 0; i < numPagamento; i++) {
+    printf("%d. %s\n", i + 1, formaPagamento[i]);
+  }
+  int escolha;
+  printf("Escolha a forma de pagamento: ");
+  scanf("%d", &escolha);
+
+  if(escolha >= 1 && escolha <= numPagamento) {
+    printf("Você esoclheu: %s\n", formaPagamento[escolha - 1]);
+  } else {
+    printf("Escolha inválida.\n");
+  }
+  
+  
+}
