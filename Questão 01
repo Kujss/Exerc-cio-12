@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 
 struct Produtos {
@@ -7,77 +8,73 @@ struct Produtos {
 };
 
 int main() {
+  
+  //produtos
+  
+  struct Produtos produto[5];
 
-  struct Produtos produto1, produto2, produto3, produto4, produto5;
+    strcpy(produto[0].nome, "Placa-mãe");
+      produto[0].valor = 480.00;
 
-  strcpy(produto1.nome, "Placa-mãe");
-  produto1.valor = 480.00;
+    strcpy(produto[1].nome, "Placa de Vídeo");
+      produto[1].valor = 1400.00;
 
-  strcpy(produto2.nome, "Placa de Vídeo");
-  produto2.valor = 1400.00;
+    strcpy(produto[2].nome, "Memória RAM");
+      produto[2].valor = 180.00;
 
-  strcpy(produto3.nome, "Memória RAM");
-  produto3.valor = 180.00;
+    strcpy(produto[3].nome, "Fonte");
+      produto[3].valor = 520.00;
 
-  strcpy(produto4.nome, "Fonte");
-  produto4.valor = 520.00;
-
-  strcpy(produto5.nome, "SSD");
-  produto5.valor = 340.00;
-
-
-
-  printf("Produto: %s\n", produto1.nome);
-  printf("Valor: R$%.2f\n\n", produto1.valor);
-
-  printf("Produto: %s\n", produto2.nome);
-  printf("Valor: R$%.2f\n\n", produto2.valor);
-
-  printf("Produto: %s\n", produto3.nome);
-  printf("Valor: R$%.2f\n\n", produto3.valor);
-
-  printf("Produto: %s\n", produto4.nome);
-  printf("Valor: R$%.2f\n\n", produto4.valor);
-
-  printf("Produto: %s\n", produto5.nome);
-  printf("Valor: R$%.2f\n\n", produto5.valor);
-
-  float total;
-
-  total = produto1.valor + produto2.valor + produto3.valor + produto4.valor + produto5.valor;
-
-  printf("---Valor final: %.2f---\n\n", total);
+    strcpy(produto[4].nome, "SSD");
+      produto[4].valor = 340.00;
 
   
+  //escolha da forma de pagamento
 
-  char formaPagamento[5][50] = {
-  "dinheiro",
-  "cartão de débito",
-  "cartão de crédito",
-  "pix",
-  "cheque"
-
-};
-
-  char produtos[5][50] = {
-  "placa de vídeo"
-  };
-
-  int numPagamento = 5;
-
-  printf("Formas de pagamento disponíveis: \n");
-  for(int i = 0; i < numPagamento; i++) {
-    printf("%d. %s\n", i + 1, formaPagamento[i]);
-  }
   int escolha;
-  printf("Escolha a forma de pagamento: ");
-  scanf("%d", &escolha);
+    printf("Escolha a forma de pagamento: \n");
+    printf("1. À vista.\n");
+    printf("2. Cartão de crédito.\n");
+    scanf("%d", &escolha);
 
-  if(escolha >= 1 && escolha <= numPagamento) {
-    printf("Você esoclheu: %s\n", formaPagamento[escolha - 1]);
-  } else {
-    printf("Escolha inválida.\n");
+  if(escolha == 1) {
+    for(int i = 0; i < 5; i++) {
+      produto[i].valor = produto[i].valor * 0.9;
+    }
+    
+  }else if(escolha == 2){
+    int parcela;
+      printf("Quantas parcelas gostaria de dividir? (Máxima de 10). ");
+      scanf("%d", &parcela);
+    if(parcela > 3 || parcela <10) {
+      for(int i = 0; i < 5; i++) {
+        parcela = produto[i].valor * 1.03;
+          break;
+      }
+      
+    }else{
+      for(int i = 0; i < 5; i++)
+        break;
+    }
+
   }
+
+  //parcelas
   
+  //int parcela;
   
+
+  //valor total
+  
+  printf("Produtos: \n\n");
+  for(int i = 0; i < 5; i++) {
+    printf("Produto: %s\n", produto[i].nome);
+    printf("Valor: R$%.2f\n", produto[i].valor);
+
+      float total;
+
+      total = produto[0].valor + produto[1].valor + produto[2].valor + produto[3].valor + produto[4].valor;
+    
+      printf("\n\nValor final: %.2f", total);
+  } 
 }
